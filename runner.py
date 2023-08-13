@@ -33,6 +33,8 @@ while running:
     SCREEEN.fill('purple')
 
     snake.draw(SCREEEN)
+    if snake.x >= (WIDTH * 30) or snake.x < 0 or snake.y >= (HEIGHT * 26) or snake.y < 0:
+      running = False
     apple.draw(SCREEEN)
     #pg.draw.rect(SCREEEN, 'red', (100, 50, WIDTH, HEIGHT))
     #pg.display.flip()
