@@ -11,8 +11,8 @@ pg.display.set_caption('Snake')
 
 rect = pg.Rect(100, 100, 100, 100)
 
-snake = Snake(100, 100)
-apple = Apple(round(random.randrange(WIDTH * 30)), round(random.randrange(HEIGHT * 25)))
+snake = Snake(WIDTH * 15, HEIGHT * 13)
+apple = Apple(round(random.randrange(WIDTH * 30)), round(random.randrange(HEIGHT * 26)))
 
 
 while running:
