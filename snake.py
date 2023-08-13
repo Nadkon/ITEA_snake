@@ -1,5 +1,5 @@
 import pygame as pg
-from constants import SQUARE_HIGHT, SQUARE_WIDTH, HEIGHT, WIDTH
+from constants import SQUARE_HIGHT, SQUARE_WIDTH
 
 class Snake:
     def __init__(self, x, y):
@@ -8,7 +8,7 @@ class Snake:
         self.head = pg.Rect(self.x, self.y, SQUARE_WIDTH, SQUARE_HIGHT)
 
     def draw(self, screen):
-        screen.fill('purple')
+        #screen.fill('purple')
         pg.draw.rect(screen, 'green', self.head, )
 
     def move(self, key):

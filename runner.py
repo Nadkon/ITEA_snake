@@ -9,10 +9,10 @@ pg.init()
 running = True
 pg.display.set_caption('Snake')
 
-rect = pg.Rect(100, 100, 100, 100)
+#rect = pg.Rect(100, 100, 100, 100)
 
-snake = Snake(WIDTH * 15, HEIGHT * 13)
-apple = Apple(round(random.randrange(WIDTH * 30)), round(random.randrange(HEIGHT * 26)))
+apple = Apple(round(random.randrange(0, SCREEN_WIDTH, SQUARE_WIDTH)), round(random.randrange(0, SCREEN_HEIGHT, SQUARE_HIGHT)))
+snake = Snake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
 
 while running:
@@ -32,10 +32,12 @@ while running:
 
     SCREEEN.fill('purple')
 
-    snake.draw(SCREEEN)
-    if snake.x >= (WIDTH * 30) or snake.x < 0 or snake.y >= (HEIGHT * 26) or snake.y < 0:
-      running = False
     apple.draw(SCREEEN)
+    #print(f"Apple: {apple.x}, {apple.y}")
+    snake.draw(SCREEEN)
+    #print(f"Snake: {snake.x}, {snake.y}")
+    if snake.x >= (SCREEN_WIDTH) or snake.x < 0 or snake.y >= (SCREEN_HEIGHT * 26) or snake.y < 0:
+      running = False
     #pg.draw.rect(SCREEEN, 'red', (100, 50, WIDTH, HEIGHT))
     #pg.display.flip()
     pg.display.update()
