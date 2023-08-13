@@ -1,6 +1,9 @@
 import pygame as pg
+import random
 from constants import *
 from snake import Snake
+from apple import Apple
+
 
 pg.init()
 running = True
@@ -9,6 +12,8 @@ pg.display.set_caption('Snake')
 rect = pg.Rect(100, 100, 100, 100)
 
 snake = Snake(100, 100)
+apple = Apple(round(random.randrange(WIDTH * 30)), round(random.randrange(HEIGHT * 25)))
+
 
 while running:
   for event in pg.event.get():
@@ -28,9 +33,10 @@ while running:
     SCREEEN.fill('purple')
 
     snake.draw(SCREEEN)
-
+    apple.draw(SCREEEN)
     #pg.draw.rect(SCREEEN, 'red', (100, 50, WIDTH, HEIGHT))
-    pg.display.flip()
+    #pg.display.flip()
+    pg.display.update()
 
     CLOCK.tick(60)
 
