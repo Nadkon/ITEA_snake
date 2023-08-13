@@ -30,14 +30,18 @@ while running:
       if event.key == pg.K_LEFT:
         snake.move(pg.K_LEFT)
 
-    SCREEEN.fill('purple')
+    SCREEN.fill('purple')
 
-    apple.draw(SCREEEN)
+    apple.draw(SCREEN)
     #print(f"Apple: {apple.x}, {apple.y}")
-    snake.draw(SCREEEN)
+    snake.draw(SCREEN)
     #print(f"Snake: {snake.x}, {snake.y}")
     if snake.x >= (SCREEN_WIDTH) or snake.x < 0 or snake.y >= (SCREEN_HEIGHT * 26) or snake.y < 0:
       running = False
+    if snake.x == apple.x and snake.y == apple.y:
+      print('catch')
+      apple = Apple(round(random.randrange(0, SCREEN_WIDTH, SQUARE_WIDTH)), round(random.randrange(0, SCREEN_HEIGHT, SQUARE_HIGHT)))
+      apple.draw(SCREEN)
     #pg.draw.rect(SCREEEN, 'red', (100, 50, WIDTH, HEIGHT))
     #pg.display.flip()
     pg.display.update()

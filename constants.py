@@ -2,5 +2,5 @@ import pygame as pg
 
 SQUARE_WIDTH, SQUARE_HIGHT = 30, 30
 SCREEN_WIDTH, SCREEN_HEIGHT = SQUARE_WIDTH * 30, SQUARE_HIGHT * 24
-SCREEEN = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+SCREEN = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 CLOCK = pg.time.Clock()
