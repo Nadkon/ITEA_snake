@@ -9,28 +9,22 @@ from apple import Apple
 pg.init()
 running = True
 pg.display.set_caption('Snake')
-
-#rect = pg.Rect(100, 100, 100, 100)
+snake_list = []
+snake_lenght = 1
 
 apple = Apple(round(random.randrange(0, SCREEN_WIDTH, SQUARE_WIDTH)), round(random.randrange(0, SCREEN_HEIGHT, SQUARE_HIGHT)))
 snake = Snake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 font_style = pg.font.SysFont(None, 50)
 
-snake_list = []
-snake_lenght = 1
-snake_head = []
-
-if len(snake_list) > snake_lenght:
-  del snake_list[0]
 
 def message(msg,color):
    mesg = font_style.render(msg, True, color)
    SCREEN.blit(mesg, [SCREEN_WIDTH/2, SCREEN_HEIGHT/2])
 
-def our_snake(width, snake_list):
-        for x in snake_list:
-            pg.draw.rect(SCREEN, 'green', [x[0], x[1], width, width])
-our_snake(10, snake_list)
+def our_snake(snake_list):
+    for x in snake_list:
+      pg.draw.rect(SCREEN, 'green', [x[0], x[1], SQUARE_WIDTH, SQUARE_HIGHT])
+
 while running:
   for event in pg.event.get():
     if event.type == pg.QUIT:
@@ -50,16 +44,21 @@ while running:
 
     apple.draw(SCREEN)
     #print(f"Apple: {apple.x}, {apple.y}")
+    snake_head = []
+    snake_head.append(snake.x)
+    snake_head.append(snake.y)
+    snake_list.append(snake_head)
+    if len(snake_list) > snake_lenght:
+        del snake_list[0]
+
+    our_snake(snake_list)
+    pg.display.update()
+
     snake.draw(SCREEN)
     #print(f"Snake: {snake.x}, {snake.y}")
     if snake.x >= (SCREEN_WIDTH) or snake.x < 0 or snake.y >= (SCREEN_HEIGHT * 26) or snake.y < 0:
       message("GAME OVER :(",'red')
       running = False
-
-
-    snake_head.append(snake.x)
-    snake_head.append(snake.y)
-    snake_list.append(snake_head)
 
     pg.display.update()
 
@@ -72,5 +71,5 @@ while running:
     #pg.display.flip()
 
     CLOCK.tick(60)
-time.sleep(2)
+time.sleep(1)
 pg.quit()
